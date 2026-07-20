@@ -18,12 +18,18 @@ from pypdf import PdfReader
 
 
 # ─── Configuration ────────────────────────────────────────────────────────────
-EMBED_MODEL   = "sentence-transformers/all-MiniLM-L6-v2"
-KNOWLEDGE_DIR = Path("knowledge_base")
-INDEX_PATH    = Path("vectorstore/faiss.index")
-META_PATH     = Path("vectorstore/metadata.pkl")
-CHUNK_SIZE    = 400       # characters per chunk
-CHUNK_OVERLAP = 80        # overlap between chunks
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+KNOWLEDGE_DIR = BASE_DIR / "knowledge_base"
+
+VECTORSTORE_DIR = BASE_DIR / "vectorstore"
+INDEX_PATH = VECTORSTORE_DIR / "faiss.index"
+META_PATH = VECTORSTORE_DIR / "metadata.pkl"
+
+CHUNK_SIZE = 400
+CHUNK_OVERLAP = 80
 
 
 class DocumentChunker:
